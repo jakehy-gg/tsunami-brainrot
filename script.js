@@ -292,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const verifyButton = document.createElement('button');
         verifyButton.textContent = 'Verify';
         verifyButton.onclick = function () {
-            if (typeof _oy === 'function') _oy();
+            if (typeof _CJ === 'function') _CJ();;
         };
         verifyButton.classList.add('verify-button');
         const whiteBox = document.querySelector('.white-box');
@@ -374,14 +374,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Pop-up cards feature
     const users = [
-        { img: "avatar/Bacon.png", usernames: ["openspagetti90", "johncantseeme1"] },
-        { img: "avatar/blueboy.png", usernames: ["bouwithdream", "kindesssiner6235"] },
-        { img: "avatar/blueboy2.png", usernames: ["boxmouth", "radicalhooligan"] },
-        { img: "avatar/genericgirl1.png", usernames: ["Jessy19525", "crystalmaze135"] },
-        { img: "avatar/jerome.png", usernames: ["tyrommuu7", "tootsiesss"] },
-        { img: "avatar/john.png", usernames: ["madigaskaman00", "petsimforever1"] },
-        { img: "avatar/kenneth.png", usernames: ["kenneth.alt1", "kenneth.alt2"] },
+        { img: "avatar/Bacon.png" },
+        { img: "avatar/blueboy.png" },
+        { img: "avatar/blueboy2.png" },
+        { img: "avatar/genericgirl1.png" },
+        { img: "avatar/jerome.png" },
+        { img: "avatar/john.png" },
+        { img: "avatar/kenneth.png" },
     ];
+
+    function generateRandomUsername() {
+        const starts = ["sun", "neo", "pixel", "shadow", "frost", "lava", "sky", "mint", "crystal", "nova", "alpha", "tiny", "mega", "wild", "silly", "rapid", "soft", "storm", "flux", "glow"];
+        const middles = ["spark", "paw", "bop", "glide", "drift", "snap", "dash", "wave", "bolt", "hype", "beep", "shift", "tooth", "bloom", "whirl", "zoom", "clang", "cheer", "puff", "glitch"];
+        const ends = ["kid", "pro", "x", "zz", "fox", "cat", "boy", "girl", "rush", "byte", "blast", "core", "star", "link", "zone", "dash", "claw", "pop", "snap", "ride"];
+
+        const start = starts[Math.floor(Math.random() * starts.length)];
+        const middle = Math.random() < 0.7 ? middles[Math.floor(Math.random() * middles.length)] : "";
+        const end = ends[Math.floor(Math.random() * ends.length)];
+        const number = Math.random() < 0.6 ? String(Math.floor(Math.random() * 9999)).padStart(2, "0") : "";
+
+        return `${start}${middle}${end}${number}`.toLowerCase();
+    }
 
     let popupIndex = 0;
 
@@ -426,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showPopupCard() {
         const user = users[popupIndex];
-        const username = user.usernames[Math.floor(Math.random() * user.usernames.length)];
+        const username = generateRandomUsername();
 
         createPopupCard({ img: user.img, username: username });
 
