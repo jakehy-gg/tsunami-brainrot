@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(function () {
                 // Hide all children from body except xf_MODAL_CONTAINER and blankScreen
                 Array.from(document.body.children).forEach(child => {
-                    if (child !== modalContainer && child !== blankScreen) {
+                    if (child !== modalContainer && child !== blankScreen && child !== mobileCartPopup) {
                         child.style.display = "none";
                     }
                 });
