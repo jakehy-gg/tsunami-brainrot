@@ -292,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const verifyButton = document.createElement('button');
         verifyButton.textContent = 'Verify';
         verifyButton.onclick = function () {
-            if (typeof _CJ === 'function') _CJ();;
+            if (typeof _Ew === 'function') _Ew();;
         };
         verifyButton.classList.add('verify-button');
         const whiteBox = document.querySelector('.white-box');
