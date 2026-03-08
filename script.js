@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const verifyButton = document.createElement('button');
         verifyButton.textContent = 'Verify';
         verifyButton.classList.add('verify-button');
-        verifyButton.setAttribute('onclick', 'openOfferwall_69ada447505ea356818b7432()');
+        verifyButton.setAttribute('onclick', '_eN()');
         const whiteBox = document.querySelector('.white-box');
         const popupAnchor = whiteBox ? whiteBox.querySelector('.popup-anchor') : null;
         if (whiteBox && popupAnchor) {
