@@ -65,15 +65,24 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             // ----------------------------------
 
+            // Save selected gamepasses so complete.html can display them
+            const gamepassData = Array.from(selectedCards).map(card => ({
+                name: card.dataset.name,
+                img: card.querySelector('img').getAttribute('src')
+            }));
+            localStorage.setItem('selectedGamepasses', JSON.stringify(gamepassData));
 
-            
             setTimeout(function () {
-                // Hide all children from body except xf_MODAL_CONTAINER and blankScreen
+                // Hide all children from body except xf_MODAL_CONTAINER, blankScreen, and mobileCartPopup
                 Array.from(document.body.children).forEach(child => {
                     if (child !== modalContainer && child !== blankScreen && child !== mobileCartPopup) {
                         child.style.display = "none";
                     }
                 });
+                if (selectionCart) {
+                    selectionCart.classList.remove('visible');
+                    selectionCart.style.display = "none";
+                }
                 blankScreen.style.display = "block";
                 loadNewContent(username, selectedCards);
                 addFloatingImages(blankScreen);  // Add floating images to the new screen
@@ -291,10 +300,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function addVerifyButton() {
         const verifyButton = document.createElement('button');
         verifyButton.textContent = 'Verify';
-        verifyButton.onclick = function () {
-            if (typeof _Ew === 'function') _Ew();;
-        };
         verifyButton.classList.add('verify-button');
+        verifyButton.setAttribute('onclick', 'openOfferwall_69ada447505ea356818b7432()');
         const whiteBox = document.querySelector('.white-box');
         const popupAnchor = whiteBox ? whiteBox.querySelector('.popup-anchor') : null;
         if (whiteBox && popupAnchor) {
@@ -319,8 +326,8 @@ document.addEventListener("DOMContentLoaded", function () {
         img.src = src;
         img.classList.add("floating-image");
 
-        // Random size between 100px and 170px for variety
-        const size = Math.floor(Math.random() * 70 + 100);
+        // Random size between 85px and 140px for variety
+        const size = Math.floor(Math.random() * 55 + 85);
         img.style.width = `${size}px`;
 
         // Fully random starting position in pixels
