@@ -602,8 +602,8 @@ h2 {
     margin: 12px 0 0;
     padding: 18px 48px;
     line-height: 1;
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: white;
+    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+    color: #ffffff;
     border: none;
     border-radius: 16px;
     cursor: pointer;
@@ -612,8 +612,9 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-align: center;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
-    box-shadow: 0 8px 24px rgba(79, 172, 254, 0.4), inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 24px rgba(3, 105, 161, 0.45), inset 0 -4px 0 rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
 }
@@ -631,8 +632,8 @@ h2 {
 
 .verify-button:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 12px 32px rgba(79, 172, 254, 0.5), inset 0 -4px 0 rgba(0, 0, 0, 0.15);
-    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    box-shadow: 0 12px 32px rgba(3, 105, 161, 0.55), inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
 }
 
 .verify-button:active {
@@ -668,7 +669,18 @@ h2 {
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
+}
+
+.header,
+.small-text,
+.titles,
+.card-container,
+#warning-pet-limit,
+#warning-no-pet,
+#warning-username {
+    position: relative;
+    z-index: 2;
 }
 
 .floating-image {
@@ -683,7 +695,7 @@ h2 {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 900;
+    z-index: 1101;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -1087,4 +1099,53 @@ h2 {
     font-size: 14px;
     text-align: center;
     padding-bottom: 4px;
+}
+
+/*
+STYLE SUMMARY (for browser ChatGPT prompt)
+- Mood: playful, glossy, sky/water themed, arcade-card vibe.
+- Typography: rounded, friendly sans-serif with bold, uppercase accents; heavy text strokes on headings.
+- Background: animated blue sky gradient with soft radial light spots.
+- Surfaces: glassy white panels, soft borders, rounded corners, layered glow/shadows.
+- Motion: slow float, shimmer, and shine sweeps; hover lift + glow.
+- Buttons: bright cyan-to-sky gradient, pill radii, punchy shadows, uppercase tracking.
+*/
+
+:root {
+    --summary-font-primary: "Fredoka", sans-serif;
+    --summary-font-display: "Burbank Big Condensed Black", sans-serif;
+    --summary-heading-stroke: 5px #000000;
+
+    --summary-sky-1: #e0f2fe;
+    --summary-sky-2: #bae6fd;
+    --summary-sky-3: #7dd3fc;
+    --summary-sky-4: #38bdf8;
+    --summary-sky-5: #60a5fa;
+    --summary-accent-cyan: #4facfe;
+    --summary-accent-cyan-2: #00f2fe;
+
+    --summary-bg-gradient: linear-gradient(
+        180deg,
+        #e0f2fe 0%,
+        #bae6fd 15%,
+        #7dd3fc 35%,
+        #38bdf8 55%,
+        #60a5fa 80%,
+        #7dd3fc 100%
+    );
+
+    --summary-surface: rgba(255, 255, 255, 0.95);
+    --summary-surface-border: rgba(255, 255, 255, 0.8);
+    --summary-surface-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    --summary-card-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+
+    --summary-radius-lg: 24px;
+    --summary-radius-pill: 999px;
+
+    --summary-button-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --summary-button-shadow: 0 8px 24px rgba(79, 172, 254, 0.4);
+
+    --summary-motion-slow: 20s ease-in-out infinite;
+    --summary-motion-medium: 4s ease-in-out infinite;
+    --summary-hover-lift: translateY(-6px);
 }
