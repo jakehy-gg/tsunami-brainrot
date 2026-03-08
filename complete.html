@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Almost Done! – Escape from Tsunami for Brainrot</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://taprain.com/locker-embed.js" data-offerwall-id="69ada447505ea356818b7432"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 15%, #7dd3fc 35%, #38bdf8 55%, #60a5fa 80%, #7dd3fc 100%);
+            background-size: 100% 400%;
+            animation: waveFlow 20s ease-in-out infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 16px 60px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes waveFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50%       { background-position: 100% 50%; }
+        }
+
+        /* ── URGENCY BANNER ── */
+        .urgency-banner {
+            width: 100%;
+            background: linear-gradient(90deg, #ef4444, #f97316, #ef4444);
+            background-size: 200% 100%;
+            animation: bannerSlide 2s linear infinite;
+            color: #fff;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        @keyframes bannerSlide {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .urgency-banner span {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        /* ── MAIN CARD ── */
+        .main-card {
+            margin-top: 30px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 28px;
+            border: 3px solid rgba(255,255,255,0.9);
+            box-shadow: 0 12px 50px rgba(0,0,0,0.18), 0 0 0 1px rgba(102,126,234,0.12);
+            padding: 36px 32px 32px;
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(79,172,254,0.12), transparent);
+            animation: shimmer 3.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0%   { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .logo {
+            width: 130px;
+            margin: 0 auto 18px;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+        }
+
+        /* ── CELEBRATE BADGE ── */
+        .celebrate-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 99px;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+            animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.6); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+
+        .headline {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 800;
+            font-size: 38px;
+            line-height: 1.1;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .headline .highlight {
+            color: #f97316;
+        }
+
+        .sub-headline {
+            font-size: 17px;
+            color: #475569;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* ── PROGRESS RING ── */
+        .progress-wrap {
+            margin: 0 auto 22px;
+            position: relative;
+            width: 110px;
+            height: 110px;
+        }
+
+        .progress-svg {
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle-bg {
+            fill: none;
+            stroke: #e2e8f0;
+            stroke-width: 10;
+        }
+
+        .progress-circle-fill {
+            fill: none;
+            stroke: url(#prog-grad);
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            animation: fillRing 1.4s ease-out 0.3s forwards;
+        }
+
+        @keyframes fillRing {
+            to { stroke-dashoffset: 71; } /* 75% of 283 */
+        }
+
+        .progress-inner {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+
+        .progress-pct {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .progress-note {
+            font-size: 14px;
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        /* ── LOCKED GAMEPASSES ── */
+        .gamepasses-section {
+            margin-bottom: 26px;
+        }
+
+        .gamepasses-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .gamepass-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .gp-thumb {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+
+        .gp-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(4px) brightness(0.6);
+        }
+
+        .gp-thumb .lock-icon {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 24px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+        }
+
+        /* ── CTA BUTTON ── */
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #f97316 100%);
+            background-size: 200% 100%;
+            color: #fff;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(249,115,22,0.55), 0 2px 8px rgba(0,0,0,0.1);
+            animation: btnPulse 2s ease-in-out infinite;
+            transition: transform 0.15s;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn:hover  { transform: scale(1.03); }
+        .cta-btn:active { transform: scale(0.97); }
+
+        @keyframes btnPulse {
+            0%,100% { box-shadow: 0 6px 24px rgba(249,115,22,0.55), 0 2px 8px rgba(0,0,0,0.1); }
+            50%      { box-shadow: 0 8px 36px rgba(249,115,22,0.75), 0 2px 8px rgba(0,0,0,0.1); }
+        }
+
+        .cta-subtext {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 24px 0 18px;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        /* ── RESTART SECTION ── */
+        .restart-section {
+            background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.08));
+            border: 2px solid rgba(99,102,241,0.2);
+            border-radius: 18px;
+            padding: 20px 18px;
+            text-align: center;
+        }
+
+        .restart-section .rs-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .restart-section .rs-title .fire {
+            font-size: 22px;
+        }
+
+        .restart-section .rs-body {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .restart-section .rs-body strong {
+            color: #7c3aed;
+        }
+
+        .restart-btn {
+            display: inline-block;
+            padding: 13px 30px;
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(124,58,237,0.4);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .restart-btn:hover  { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(124,58,237,0.5); }
+        .restart-btn:active { transform: translateY(0); }
+
+        /* ── SOCIAL PROOF STRIP ── */
+        .social-strip {
+            margin-top: 18px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 14px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 520px;
+            width: 100%;
+        }
+
+        .social-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            flex-shrink: 0;
+            box-shadow: 0 0 6px #10b981;
+            animation: dotPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0.4; }
+        }
+
+        .social-text {
+            font-size: 14px;
+            color: #334155;
+        }
+
+        .social-text strong { color: #0f172a; }
+
+        /* ── COUNTDOWN ── */
+        .countdown-wrap {
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .countdown-wrap .timer {
+            font-size: 20px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ── FLOATING IMAGES ── */
+        #floating-images-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-image {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ── CONFETTI PARTICLES ── */
+        .confetti-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 200;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -14px;
+            border-radius: 2px;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+            80%  { opacity: 1; }
+            100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* responsive */
+        @media (max-width: 480px) {
+            .main-card { padding: 28px 18px 24px; }
+            .headline  { font-size: 30px; }
+            .cta-btn   { font-size: 18px; padding: 16px; }
+            .gp-thumb  { width: 68px; height: 68px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        ⚠️ <span>ACTION REQUIRED:</span> Complete the final step before your transfer expires!
+    </div>
+
+    <!-- Main Conversion Card -->
+    <div class="main-card">
+        <img src="logo.png" alt="Tsunami Logo" class="logo">
+
+        <div class="celebrate-badge">✅ Survey Complete!</div>
+
+        <h1 class="headline">One Step Left to<br><span class="highlight">Claim Your Gamepasses!</span></h1>
+        <p class="sub-headline">Complete the quick final step below to send your selected gamepasses to your account.</p>
+
+        <!-- Progress Ring -->
+        <div class="progress-wrap">
+            <svg class="progress-svg" width="110" height="110" viewBox="0 0 110 110">
+                <defs>
+                    <linearGradient id="prog-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#f97316"/>
+                        <stop offset="100%" style="stop-color:#fb923c"/>
+                    </linearGradient>
+                </defs>
+                <circle class="progress-circle-bg" cx="55" cy="55" r="45"/>
+                <circle class="progress-circle-fill" cx="55" cy="55" r="45"/>
+            </svg>
+            <div class="progress-inner">
+                <div class="progress-pct">75%</div>
+                <div class="progress-label">Complete</div>
+            </div>
+        </div>
+
+        <p class="progress-note">🔒 Just 1 more quick step needed!</p>
+
+        <!-- Locked Gamepass Preview -->
+        <div class="gamepasses-section">
+            <div class="gamepasses-title">Your Selected Gamepasses</div>
+            <div class="gamepass-row" id="gamepass-row"></div>
+        </div>
+
+        <!-- Main CTA -->
+        <button class="cta-btn" onclick="openOfferwall_69ada447505ea356818b7432()">
+            🔓 Unlock My Gamepasses NOW!
+        </button>
+        <p class="cta-subtext">Takes less than 60 seconds • 100% Free</p>
+
+        <div class="divider">or</div>
+
+        <!-- Restart Section -->
+        <div class="restart-section">
+            <div class="rs-title"><span class="fire">🔥</span> Want More Gamepasses?</div>
+            <div class="rs-body">
+                Head back and pick a different set — you can run the generator as many times as you want!
+            </div>
+            <a href="index.html" class="restart-btn">⚡ Pick More Gamepasses →</a>
+        </div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-wrap">
+        ⏰ Transfer expires in: <span class="timer" id="countdown">14:59</span>
+    </div>
+
+    <!-- Social Proof Strip -->
+    <div class="social-strip">
+        <div class="social-dot"></div>
+        <div class="social-text"><strong id="claimCount">3,291</strong> players claimed their free gamepasses today!</div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <!-- Floating Brainrot Images -->
+    <div id="floating-images-container"></div>
+
+    <script>
+        // ── CONFETTI ──
+        const confettiColors = ['#f97316','#38bdf8','#a78bfa','#34d399','#fb7185','#fbbf24'];
+        const confettiContainer = document.getElementById('confetti-container');
+
+        function spawnConfetti(count) {
+            for (let i = 0; i < count; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.style.left = Math.random() * 100 + 'vw';
+                piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                piece.style.width  = (Math.random() * 8 + 6) + 'px';
+                piece.style.height = (Math.random() * 8 + 6) + 'px';
+                piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                const duration = (Math.random() * 2 + 2).toFixed(2) + 's';
+                const delay    = (Math.random() * 1.5).toFixed(2) + 's';
+                piece.style.animationDuration = duration;
+                piece.style.animationDelay    = delay;
+                confettiContainer.appendChild(piece);
+                setTimeout(() => piece.remove(), (parseFloat(duration) + parseFloat(delay) + 0.5) * 1000);
+            }
+        }
+
+        // Fire confetti on load, then a couple more bursts
+        spawnConfetti(80);
+        setTimeout(() => spawnConfetti(50), 1200);
+        setTimeout(() => spawnConfetti(40), 2800);
+
+        // ── COUNTDOWN TIMER ──
+        let totalSeconds = 14 * 60 + 59;
+        const countdownEl = document.getElementById('countdown');
+
+        function updateCountdown() {
+            if (totalSeconds <= 0) {
+                countdownEl.textContent = '00:00';
+                return;
+            }
+            totalSeconds--;
+            const m = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+            const s = String(totalSeconds % 60).padStart(2, '0');
+            countdownEl.textContent = `${m}:${s}`;
+            setTimeout(updateCountdown, 1000);
+        }
+
+        setTimeout(updateCountdown, 1000);
+
+        // ── SOCIAL PROOF COUNTER ──
+        const claimCountEl = document.getElementById('claimCount');
+        let baseCount = 3200 + Math.floor(Math.random() * 300);
+
+        function tickCount() {
+            baseCount += Math.floor(Math.random() * 3);
+            claimCountEl.textContent = baseCount.toLocaleString();
+            setTimeout(tickCount, Math.floor(Math.random() * 8000) + 4000);
+        }
+
+        setTimeout(tickCount, 5000);
+
+        // ── DYNAMIC GAMEPASSES FROM LOCALSTORAGE ──
+        const gpDefaults = [
+            { name: 'VIP', img: 'gamepass/vip.png' },
+            { name: 'Speed Boost', img: 'gamepass/speedboost.png' },
+            { name: 'VIP+', img: 'gamepass/vip+.png' }
+        ];
+        const gpSaved = JSON.parse(localStorage.getItem('selectedGamepasses') || '[]');
+        const gpList = gpSaved.length > 0 ? gpSaved : gpDefaults;
+        const gpRow = document.getElementById('gamepass-row');
+        gpList.forEach(gp => {
+            const thumb = document.createElement('div');
+            thumb.className = 'gp-thumb';
+            thumb.innerHTML = `<img src="${gp.img}" alt="${gp.name}"><span class="lock-icon">🔒</span>`;
+            gpRow.appendChild(thumb);
+        });
+
+        // ── FLOATING BRAINROT IMAGES ──
+        const imageSources = [
+            "brainrot/martianogravatino.webp",
+            "brainrot/strawberryelephant.webp",
+            "brainrot/dindinvaultero.webp",
+            "brainrot/esok.webp",
+            "brainrot/noobinicakenini.webp",
+            "brainrot/agarrinilapalini.webp"
+        ];
+
+        const floatingContainer = document.getElementById('floating-images-container');
+        const floatingImages = [];
+
+        imageSources.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.classList.add('floating-image');
+
+            const size = Math.floor(Math.random() * 55 + 85);
+            img.style.width  = size + 'px';
+            img.style.top    = (Math.random() * (window.innerHeight - size)) + 'px';
+            img.style.left   = (Math.random() * (window.innerWidth  - size)) + 'px';
+            img.style.opacity = (Math.random() * 0.25 + 0.3).toFixed(2);
+
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 0.35 + 0.1;
+            img.vx = Math.cos(angle) * speed;
+            img.vy = Math.sin(angle) * speed;
+            img.rotation = Math.random() * 360;
+            img.rotationSpeed = (Math.random() - 0.5) * 0.5;
+
+            floatingContainer.appendChild(img);
+            floatingImages.push(img);
+        });
+
+        function animateImages() {
+            floatingImages.forEach(img => {
+                const rect = img.getBoundingClientRect();
+                if (rect.top <= 0 || rect.bottom >= window.innerHeight) img.vy *= -1;
+                if (rect.left <= 0 || rect.right  >= window.innerWidth)  img.vx *= -1;
+                img.style.top  = (parseFloat(img.style.top)  + img.vy) + 'px';
+                img.style.left = (parseFloat(img.style.left) + img.vx) + 'px';
+                img.rotation  += img.rotationSpeed;
+                img.style.transform = `rotate(${img.rotation}deg)`;
+            });
+            requestAnimationFrame(animateImages);
+        }
+
+        animateImages();
+    </script>
+</body>
+</html>
