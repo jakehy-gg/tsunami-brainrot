@@ -602,8 +602,8 @@ h2 {
     margin: 12px 0 0;
     padding: 18px 48px;
     line-height: 1;
-    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
     border: none;
     border-radius: 16px;
     cursor: pointer;
@@ -612,9 +612,8 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-align: center;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
-    box-shadow: 0 8px 24px rgba(3, 105, 161, 0.45), inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 24px rgba(79, 172, 254, 0.4), inset 0 -4px 0 rgba(0, 0, 0, 0.15);
     position: relative;
     overflow: hidden;
 }
@@ -632,8 +631,8 @@ h2 {
 
 .verify-button:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 12px 32px rgba(3, 105, 161, 0.55), inset 0 -4px 0 rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    box-shadow: 0 12px 32px rgba(79, 172, 254, 0.5), inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
 }
 
 .verify-button:active {
