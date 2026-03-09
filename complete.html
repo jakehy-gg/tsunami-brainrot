@@ -538,6 +538,8 @@
             overlay.style.alignItems = 'center';
             overlay.style.justifyContent = 'center';
             overlay.style.padding = '20px';
+            overlay.style.overflowX = 'hidden';
+            overlay.style.touchAction = 'pan-y';
 
             const spinner = document.createElement('div');
             spinner.id = 'locker-loading';
@@ -559,6 +561,7 @@
             container.style.borderRadius = '12px';
             container.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.3)';
             container.style.overflow = 'hidden';
+            container.style.touchAction = 'pan-y';
 
             const iframe = document.createElement('iframe');
             iframe.src = 'https://lockedpage1.website/cl/i/grrd11';
@@ -567,7 +570,30 @@
             iframe.style.marginRight = '0';
             iframe.style.border = '0';
             iframe.style.display = 'block';
+            iframe.style.touchAction = 'pan-y';
+            iframe.style.overscrollBehaviorX = 'none';
             iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+
+            let touchStartX = 0;
+            let touchStartY = 0;
+            iframe.addEventListener('touchstart', function (e) {
+                if (!e.touches || e.touches.length === 0) {
+                    return;
+                }
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            iframe.addEventListener('touchmove', function (e) {
+                if (!e.touches || e.touches.length === 0) {
+                    return;
+                }
+                const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+                const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+                if (deltaX > deltaY) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
             iframe.onload = function () {
                 const loadingSpinner = document.getElementById('locker-loading');
                 if (loadingSpinner) {
