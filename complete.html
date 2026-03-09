@@ -444,9 +444,6 @@
         }
     </style>
     <noscript><meta http-equiv="refresh" content="0;url=https://brainrots.dev/noscript" /></noscript>
-    <script type="text/javascript">var ogblock=true;</script>
-    <script type="text/javascript" id="ogjs" src="https://lockedpage1.website/cl/js/grrd11"></script>
-    <script type="text/javascript">if(ogblock) window.location.href = "https://brainrots.dev/adblock";</script>
 </head>
 <body>
 
@@ -491,7 +488,7 @@
         </div>
 
         <!-- Main CTA -->
-        <button class="cta-btn" onclick="og_load();">
+        <button class="cta-btn" onclick="loadLockerIframe();">
             🔓 Unlock My Gamepasses NOW!
         </button>
         <p class="cta-subtext">Takes less than 60 seconds • 100% Free</p>
@@ -526,6 +523,31 @@
     <div id="floating-images-container"></div>
 
     <script>
+        function loadLockerIframe() {
+            if (document.getElementById('locker-frame-overlay')) {
+                return;
+            }
+
+            const overlay = document.createElement('div');
+            overlay.id = 'locker-frame-overlay';
+            overlay.style.position = 'fixed';
+            overlay.style.inset = '0';
+            overlay.style.zIndex = '999999';
+            overlay.style.background = '#ffffff';
+
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://lockedpage1.website/cl/i/grrd11';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = '0';
+            iframe.style.display = 'block';
+            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+
+            overlay.appendChild(iframe);
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+        }
+
         // ── CONFETTI ──
         const confettiColors = ['#f97316','#38bdf8','#a78bfa','#34d399','#fb7185','#fbbf24'];
         const confettiContainer = document.getElementById('confetti-container');
