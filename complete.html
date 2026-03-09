@@ -528,6 +528,16 @@
                 return;
             }
 
+            // Lock body to prevent page dragging
+            const originalBodyStyle = {
+                position: document.body.style.position,
+                overflow: document.body.style.overflow,
+                width: document.body.style.width
+            };
+            document.body.style.position = 'fixed';
+            document.body.style.overflow = 'hidden';
+            document.body.style.width = '100%';
+
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
             const overlay = document.createElement('div');
@@ -585,6 +595,31 @@
             container.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.3)';
             container.style.overflow = 'hidden';
             container.style.touchAction = 'pan-y';
+
+            // Close modal function
+            function closeModal() {
+                overlay.remove();
+                // Restore body styles
+                document.body.style.position = originalBodyStyle.position;
+                document.body.style.overflow = originalBodyStyle.overflow;
+                document.body.style.width = originalBodyStyle.width;
+            }
+
+            // Close on overlay background click (outside container)
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) {
+                    closeModal();
+                }
+            });
+
+            // Close on escape key
+            const escapeHandler = function (e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
 
             const iframe = document.createElement('iframe');
             iframe.src = 'https://lockedpage1.website/cl/i/grrd11';
