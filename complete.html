@@ -559,6 +559,7 @@
             container.style.borderRadius = '12px';
             container.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.3)';
             container.style.overflow = 'hidden';
+            container.style.overflowX = 'hidden';
 
             const iframe = document.createElement('iframe');
             iframe.src = 'https://lockedpage1.website/cl/i/grrd11';
@@ -567,6 +568,7 @@
             iframe.style.marginRight = '0';
             iframe.style.border = '0';
             iframe.style.display = 'block';
+            iframe.style.overflowX = 'hidden';
             iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
             iframe.onload = function () {
                 const loadingSpinner = document.getElementById('locker-loading');
