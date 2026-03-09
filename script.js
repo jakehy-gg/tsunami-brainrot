@@ -302,19 +302,82 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.style.position = 'fixed';
         overlay.style.inset = '0';
         overlay.style.zIndex = '999999';
-        overlay.style.background = '#ffffff';
+        overlay.style.background = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.padding = '20px';
+        overlay.style.overflowX = 'hidden';
+        overlay.style.touchAction = 'pan-y';
+
+        const spinner = document.createElement('div');
+        spinner.id = 'locker-loading';
+        spinner.style.position = 'absolute';
+        spinner.style.width = '50px';
+        spinner.style.height = '50px';
+        spinner.style.border = '4px solid rgba(255, 255, 255, 0.3)';
+        spinner.style.borderTop = '4px solid #ffffff';
+        spinner.style.borderRadius = '50%';
+        spinner.style.animation = 'spin 0.8s linear infinite';
+
+        const container = document.createElement('div');
+        container.style.width = '90%';
+        container.style.maxWidth = '700px';
+        container.style.height = '80vh';
+        container.style.maxHeight = '600px';
+        container.style.position = 'relative';
+        container.style.background = '#ffffff';
+        container.style.borderRadius = '12px';
+        container.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.3)';
+        container.style.overflow = 'hidden';
+        container.style.touchAction = 'pan-y';
 
         const iframe = document.createElement('iframe');
         iframe.src = 'https://lockedpage1.website/cl/i/grrd11';
         iframe.style.width = '100%';
         iframe.style.height = '100%';
+        iframe.style.marginRight = '0';
         iframe.style.border = '0';
         iframe.style.display = 'block';
+        iframe.style.touchAction = 'pan-y';
+        iframe.style.overscrollBehaviorX = 'none';
         iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
 
-        overlay.appendChild(iframe);
+        let touchStartX = 0;
+        let touchStartY = 0;
+        iframe.addEventListener('touchstart', function (e) {
+            if (!e.touches || e.touches.length === 0) {
+                return;
+            }
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        iframe.addEventListener('touchmove', function (e) {
+            if (!e.touches || e.touches.length === 0) {
+                return;
+            }
+            const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+            const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+            if (deltaX > deltaY) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        iframe.onload = function () {
+            const loadingSpinner = document.getElementById('locker-loading');
+            if (loadingSpinner) {
+                loadingSpinner.style.display = 'none';
+            }
+        };
+
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+        document.head.appendChild(styleSheet);
+
+        container.appendChild(iframe);
+        overlay.appendChild(spinner);
+        overlay.appendChild(container);
         document.body.appendChild(overlay);
-        document.body.style.overflow = 'hidden';
     }
 
     function addVerifyButton() {
