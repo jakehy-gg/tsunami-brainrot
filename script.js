@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const verifyButton = document.createElement('button');
         verifyButton.textContent = 'Verify';
         verifyButton.classList.add('verify-button');
-        verifyButton.setAttribute('onclick', '_eN()');
+        verifyButton.setAttribute('onclick', 'og_load();');
         const whiteBox = document.querySelector('.white-box');
         const popupAnchor = whiteBox ? whiteBox.querySelector('.popup-anchor') : null;
         if (whiteBox && popupAnchor) {
