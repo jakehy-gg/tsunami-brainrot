@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Out of Stock – Escape from Tsunami for Brainrot</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <noscript><meta http-equiv="refresh" content="0;url=https://brainrots.dev/noscript" /></noscript>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 15%, #7dd3fc 35%, #38bdf8 55%, #60a5fa 80%, #7dd3fc 100%);
+            background-size: 100% 400%;
+            animation: waveFlow 20s ease-in-out infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 16px 60px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes waveFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50%       { background-position: 100% 50%; }
+        }
+
+        /* ── BANNER ── */
+        .urgency-banner {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            background: linear-gradient(90deg, #ef4444, #dc2626, #ef4444);
+            background-size: 200% 100%;
+            animation: bannerSlide 2s linear infinite;
+            color: #fff;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 480px) {
+            .urgency-banner { font-size: 13px; padding: 9px 12px; }
+            .urgency-banner span { font-size: 14px; }
+        }
+
+        @keyframes bannerSlide {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .urgency-banner span {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        /* ── MAIN CARD ── */
+        .main-card {
+            margin-top: 30px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 28px;
+            border: 3px solid rgba(255,255,255,0.9);
+            box-shadow: 0 12px 50px rgba(0,0,0,0.18), 0 0 0 1px rgba(239,68,68,0.12);
+            padding: 36px 32px 32px;
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(239,68,68,0.08), transparent);
+            animation: shimmer 3.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0%   { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .logo {
+            width: 130px;
+            margin: 0 auto 18px;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+        }
+
+        /* ── STATUS BADGE ── */
+        .status-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 99px;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+            animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.6); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+
+        /* ── ICON ── */
+        .oos-icon {
+            font-size: 72px;
+            line-height: 1;
+            margin-bottom: 16px;
+            animation: shake 0.6s cubic-bezier(0.36,0.07,0.19,0.97) both;
+            display: block;
+        }
+
+        @keyframes shake {
+            10%, 90%  { transform: translateX(-2px); }
+            20%, 80%  { transform: translateX(4px);  }
+            30%, 50%, 70% { transform: translateX(-6px); }
+            40%, 60%  { transform: translateX(6px);  }
+        }
+
+        .headline {
+            font-weight: 800;
+            font-size: 36px;
+            line-height: 1.1;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .headline .highlight {
+            color: #ef4444;
+        }
+
+        .sub-headline {
+            font-size: 17px;
+            color: #475569;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* ── INFO BOX ── */
+        .info-box {
+            background: linear-gradient(135deg, rgba(239,68,68,0.07), rgba(249,115,22,0.07));
+            border: 2px solid rgba(239,68,68,0.2);
+            border-radius: 18px;
+            padding: 20px 18px;
+            margin-bottom: 26px;
+            text-align: left;
+        }
+
+        .info-box .info-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 9px;
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.45;
+        }
+
+        .info-row:last-child { margin-bottom: 0; }
+
+        .info-row .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ef4444;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        /* ── RETRY BUTTON ── */
+        .retry-btn {
+            display: block;
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #f97316 100%);
+            background-size: 200% 100%;
+            color: #fff;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(249,115,22,0.55), 0 2px 8px rgba(0,0,0,0.1);
+            animation: btnPulse 2s ease-in-out infinite;
+            transition: transform 0.15s;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .retry-btn:hover  { transform: scale(1.03); }
+        .retry-btn:active { transform: scale(0.97); }
+
+        @keyframes btnPulse {
+            0%,100% { box-shadow: 0 6px 24px rgba(249,115,22,0.55), 0 2px 8px rgba(0,0,0,0.1); }
+            50%      { box-shadow: 0 8px 36px rgba(249,115,22,0.75), 0 2px 8px rgba(0,0,0,0.1); }
+        }
+
+        .btn-subtext {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 22px 0 18px;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        /* ── RESTOCK BOX ── */
+        .restock-box {
+            background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.08));
+            border: 2px solid rgba(99,102,241,0.2);
+            border-radius: 18px;
+            padding: 20px 18px;
+            text-align: center;
+        }
+
+        .restock-box .rs-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .restock-box .rs-body {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .restock-box .rs-body strong {
+            color: #7c3aed;
+        }
+
+        .restock-timer {
+            font-size: 28px;
+            font-weight: 800;
+            color: #7c3aed;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 2px;
+        }
+
+        .restock-label {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        /* ── FLOATING IMAGES ── */
+        #floating-images-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-image {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 480px) {
+            .main-card { padding: 28px 18px 24px; }
+            .headline  { font-size: 28px; }
+            .retry-btn { font-size: 18px; padding: 16px; }
+            .oos-icon  { font-size: 58px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner -->
+    <div class="urgency-banner">
+        ⚠️ <span>NOTICE:</span> These gamepasses are currently out of stock!
+    </div>
+
+    <!-- Main Card -->
+    <div class="main-card">
+        <img src="logo.png" alt="Tsunami Logo" class="logo">
+
+        <div class="status-badge">❌ Out of Stock</div>
+
+        <span class="oos-icon">📦</span>
+
+        <h1 class="headline">Sorry, These Are<br><span class="highlight">Out of Stock!</span></h1>
+        <p class="sub-headline">The gamepasses you selected have just run out. Don't worry — stock refreshes regularly!</p>
+
+        <!-- Info -->
+        <div class="info-box">
+            <div class="info-title">🔎 What happened?</div>
+            <div class="info-row"><span class="dot"></span><span>High demand caused the selected gamepasses to sell out faster than expected.</span></div>
+            <div class="info-row"><span class="dot"></span><span>Stock is restocked frequently throughout the day.</span></div>
+            <div class="info-row"><span class="dot"></span><span>Try again in a few minutes or pick a different combination.</span></div>
+        </div>
+
+        <!-- Retry CTA -->
+        <a href="index.html" class="retry-btn">🔄 Try Again Now</a>
+        <p class="btn-subtext">New stock drops every few minutes — be quick!</p>
+
+        <div class="divider">restock timer</div>
+
+        <!-- Restock Countdown -->
+        <div class="restock-box">
+            <div class="rs-title">⏳ Next Restock In</div>
+            <div class="rs-body">New gamepass slots open up automatically. <strong>Refresh before someone else grabs them!</strong></div>
+            <div class="restock-timer" id="restock-timer">00:59</div>
+            <div class="restock-label">minutes until next batch drops</div>
+        </div>
+    </div>
+
+    <!-- Floating Images -->
+    <div id="floating-images-container"></div>
+
+    <script>
+        // ── RESTOCK COUNTDOWN ──
+        let restockSeconds = 59;
+        const timerEl = document.getElementById('restock-timer');
+
+        function tickRestock() {
+            const m = Math.floor(restockSeconds / 60);
+            const s = restockSeconds % 60;
+            timerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+            if (restockSeconds > 0) {
+                restockSeconds--;
+            } else {
+                restockSeconds = 59; // loop
+            }
+        }
+
+        tickRestock();
+        setInterval(tickRestock, 1000);
+
+        // ── FLOATING IMAGES ──
+        const imageSources = [
+            "brainrot/martianogravatino.webp",
+            "brainrot/strawberryelephant.webp",
+            "brainrot/dindinvaultero.webp",
+            "brainrot/esok.webp",
+            "brainrot/noobinicakenini.webp",
+            "brainrot/agarrinilapalini.webp"
+        ];
+
+        const floatingImages = [];
+        const container = document.getElementById('floating-images-container');
+
+        imageSources.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.classList.add('floating-image');
+            const size = Math.floor(Math.random() * 60 + 80);
+            img.style.width = `${size}px`;
+            img.style.top  = `${Math.random() * (window.innerHeight - size)}px`;
+            img.style.left = `${Math.random() * (window.innerWidth  - size)}px`;
+            const speed = Math.random() * 0.35 + 0.1;
+            const angle = Math.random() * Math.PI * 2;
+            img.vx = Math.cos(angle) * speed;
+            img.vy = Math.sin(angle) * speed;
+            img.rotation = Math.random() * 360;
+            img.rotationSpeed = (Math.random() - 0.5) * 0.5;
+            img.style.opacity = (Math.random() * 0.25 + 0.35).toFixed(2);
+            container.appendChild(img);
+            floatingImages.push(img);
+        });
+
+        function animate() {
+            floatingImages.forEach(img => {
+                const rect = img.getBoundingClientRect();
+                if (rect.top <= 0 || rect.bottom >= window.innerHeight) img.vy *= -1;
+                if (rect.left <= 0 || rect.right  >= window.innerWidth)  img.vx *= -1;
+                img.style.top  = `${parseFloat(img.style.top)  + img.vy}px`;
+                img.style.left = `${parseFloat(img.style.left) + img.vx}px`;
+                img.rotation  += img.rotationSpeed;
+                img.style.transform = `rotate(${img.rotation}deg)`;
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
