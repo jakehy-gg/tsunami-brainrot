@@ -37,7 +37,8 @@
 
         /* ── URGENCY BANNER ── */
         .urgency-banner {
-            width: 100%;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
             background: linear-gradient(90deg, #ef4444, #f97316, #ef4444);
             background-size: 200% 100%;
             animation: bannerSlide 2s linear infinite;
@@ -50,6 +51,12 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 480px) {
+            .urgency-banner { font-size: 13px; padding: 9px 12px; }
+            .urgency-banner span { font-size: 14px; }
         }
 
         @keyframes bannerSlide {
@@ -524,6 +531,10 @@
 
     <script>
         function loadLockerIframe() {
+            if (window.innerWidth > 768) {
+                window.open('https://lockedpage1.website/cl/i/m55ld4', '_blank', 'noopener,noreferrer');
+                return;
+            }
             if (document.getElementById('locker-frame-overlay')) {
                 return;
             }
@@ -553,7 +564,7 @@
             container.style.width = '90%';
             container.style.maxWidth = '700px';
             container.style.height = '80vh';
-            container.style.maxHeight = '600px';
+            container.style.maxHeight = window.innerWidth > 768 ? '900px' : '600px';
             container.style.position = 'relative';
             container.style.background = '#ffffff';
             container.style.borderRadius = '12px';
@@ -562,7 +573,7 @@
             container.style.overflowX = 'hidden';
 
             const iframe = document.createElement('iframe');
-            iframe.src = 'https://lockedpage1.website/cl/i/grrd11';
+            iframe.src = 'https://lockedpage1.website/cl/i/m55ld4';
             iframe.style.width = '100%';
             iframe.style.height = '100%';
             iframe.style.marginRight = '0';
