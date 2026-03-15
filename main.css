@@ -848,6 +848,10 @@ h2 {
         content: url('gamepass/mobile-oppack.png');
     }
 
+    .card[data-name="Double Jump Coil"] img {
+        content: url('gamepass/mobile-coil.png');
+    }
+
     .card[data-name*="Pack"] img {
         width: 240px;
         height: 240px;
